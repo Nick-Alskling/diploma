@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Розклад занять</title>
+    <style>@import url("style.css");</style>
+    <script type="text/javascript" src="http://requirejs.org/docs/release/2.3.2/minified/require.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="linkedselect.js"></script>
+    <script src="parsing.js"></script>
+    <script src="app.js"></script>
+    <script src='server.js'></script>
+</head>
+<body>
+    <div class = container>
+        <header>
+            <div class = contact>
+                <div>Корисна інформація</div>
+                <a href="https://knute.edu.ua/">Офіційний сайт КНТЕУ</a>
+                <a href="http://ldn.knute.edu.ua/">Сайт дистанційного навчання</a>
+                <a href="https://t.me/knteu">Новини КНТЕУ в Телеграм</a>
+                <a href="https://www.instagram.com/knute_official/?hl=uk">Новини КНТЕУ в Інстаграм</a>
+            </div>
+        </header>
+        <section>
+            <div class = main>
+                <div class = form>
+                    <form method="post" id="formdata" action="">
+                        <!--<div id="result_form"></div>-->
+                        <div class = "name"><h2>Оберіть факультет, курс, групу<h2></div>
+                            <div class = "faculty">
+                                <div>Факультет</div>               
+                                <select name="fakultet" id="myfakultet">
+                                    <option disabled selected>вибір</option>
+                                    <option value ="fak1">ФМТП</option>
+                                    <option value ="fak2">ФТМ</option>
+                                    <option value ="fak3">ФЕМП</option>
+                                    <option value ="fak4">ФІТ</option>
+                                    <option value ="fak5">ФРГТБ</option>
+                                    <option value ="fak6">ФФО</option>
+                                </select>   
+                            </div>
+                            <div class = "course">
+                                <div>Курс</div>                
+                                <select name="kurs" id="mykurs">
+                                    <!-- <option disabled selected>курс</option>
+                                    <option value ="kurs1">1</option>
+                                    <option value ="kurs2">2</option>
+                                    <option value ="kurs3">3</option>
+                                    <option value ="kurs4">4</option>
+                                    <option value ="kurs5">1м</option> -->
+                                </select>
+                            </div>
+                            <div class = group>
+                                <div>Група</div>               
+                                <select name="grupa" id="mygrupa">
+                                <option disabled selected>група</option>
+                                    <script type="text/javascript">
+                                        var syncList1 = new syncList;// Создаем новый объект связанных списков
+                                        syncList1.dataList = {// Определяем значения подчиненных списков (2 и 3 селектов)
+                                        /* Определяем элементы второго списка в зависимости 
+                                        от выбранного значения в первом списке */
+                                            'fak1':{
+                                                'fak1_kurs1':'1',
+                                                'fak1_kurs2':'2',
+                                                'fak1_kurs3':'3',
+                                                'fak1_kurs4':'4',
+                                                'fak1_kurs1m':'1м',
+                                                'fak1_kurs2m':'2м',
+                                            },
+                                            'fak2':{
+                                                'fak2_kurs1':'1',
+                                                'fak2_kurs2':'2',
+                                                'fak2_kurs3':'3',
+                                                'fak2_kurs4':'4',
+                                                'fak2_kurs1m':'1м',
+                                                'fak2_kurs2m':'2м',
+                                            },
+                                            'fak3':{
+                                                'fak3_kurs1':'1',
+                                                'fak3_kurs2':'2',
+                                                'fak3_kurs3':'3',
+                                                'fak3_kurs4':'4',
+                                                'fak3_kurs1m':'1м',
+                                                'fak3_kurs2m':'2м',
+                                            },
+                                            'fak4':{
+                                                'fak4_kurs1':'1',
+                                                'fak4_kurs2':'2',
+                                                'fak4_kurs3':'3',
+                                                'fak4_kurs4':'4',
+                                                'fak4_kurs1m':'1м',
+                                                'fak4_kurs2m':'2м',
+                                            },
+                                            'fak5':{
+                                                'fak5_kurs1':'1',
+                                                'fak5_kurs2':'2',
+                                                'fak5_kurs3':'3',
+                                                'fak5_kurs4':'4',
+                                                'fak5_kurs1m':'1м',
+                                                'fak5_kurs2m':'2м',
+                                            },
+                                            'fak6':{
+                                                'fak6_kurs1':'1',
+                                                'fak6_kurs2':'2',
+                                                'fak6_kurs3':'3',
+                                                'fak6_kurs4':'4',
+                                                'fak6_kurs1m':'1м',
+                                                'fak6_kurs2m':'2м',
+                                            },
+                            
+                                        /* Определяем элементы третьего списка в зависимости 
+                                        от выбранного значения во втором списке */
+                            
+                                        'fak4_kurs1':{
+                                            'fak4_kurs1_1':'1 група',
+                                            'fak4_kurs1_6':'6 група',
+                                            'fak4_kurs1_7':'7 група',
+                                            'fak4_kurs1_8':'8 група',
+                                            'fak4_kurs1_9':'9 група',
+                                            'fak4_kurs1_10':'10 група',
+                                            'fak4_kurs1_11':'11 група',
+                                            'fak4_kurs1_12':'12 група',
+                                            },
+                                            'fak4_kurs2':{
+                                                'fak4_kurs2_1':'1 група',
+                                                'fak4_kurs2_6':'6 група',
+                                                'fak4_kurs2_7':'7 група',
+                                                'fak4_kurs2_8':'8 група',
+                                                'fak4_kurs2_9':'9 група',
+                                                'fak4_kurs2_10':'10 група',
+                                                'fak4_kurs2_11':'11 група',
+                                            },
+                                            'fak4_kurs3':{
+                                                'fak4_kurs3_1':'1 група',
+                                                'fak4_kurs3_6':'6 група',
+                                                'fak4_kurs3_7':'7 група',
+                                                'fak4_kurs3_8':'8 група',
+                                                'fak4_kurs3_9':'9 група',
+                                                'fak4_kurs3_10':'10 група',
+                                                'fak4_kurs3_13':'13 група',
+                                            },
+                                            'fak4_kurs4':{
+                                                'fak4_kurs4_1':'1 група',
+                                                'fak4_kurs4_6':'6 група',
+                                                'fak4_kurs4_7':'7 група',
+                                                'fak4_kurs4_9':'9 група',
+                                            },
+                                            'fak4_kurs1м':{
+                                                'fak4_kurs1м_1':'1м група',
+                                                'fak4_kurs1м_6':'6м група',
+                                                'fak4_kurs1м_7':'7м група',
+                                            },
+                                            'fak4_kurs2м':{
+                                                'fak4_kurs2м_1':'1м група',
+                                                'fak4_kurs2м_6':'6м група',
+                                                'fak4_kurs2м_7':'7м група',
+                                            }
+                                        };
+                                        // Включаем синхронизацию связанных списков
+                                        syncList1.sync("myfakultet","mykurs","mygrupa");
+                                    </script>
+                                </select>
+                            </div>
+                            <div class = nextweek>
+                                <label for="language">Виберіть тиждень</label>
+                                <p><input name="week" type="radio" value="current_week"> Поточний тиждень</p>
+                                <p><input name="week" type="radio" value="next_week"> Наступний тиждень</p>
+                            </div>
+                            <div class = button><input type="button" value="Підтвердити" id="submit_form"></div>
+                    </form>
+                </div>
+                <div class = article>
+                    <div id = "info"></div>
+                    <table id = "schedule"></table>
+                </div>    
+            </div>
+        </section>
+        <footer>
+            <div class = down>
+                <div class = advices>Пропозиції та побажання</div>
+                <div class = registration>
+                    <form action="/form_handler" method="post" id="feedback" enctype="text/plain">
+                        <input type="text" placeholder="Ваше ім'я*" id="user_name" required>
+                        <input type="text" placeholder="Ваш e-mail*" id="user_email" required>
+                        <input type="text" id="textComment" placeholder="Повідомлення*" required>
+                        <input type="submit" class="button" id="btn_submit" value="Підтвердити" onClick="SendPost()">
+                    </form>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
